@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Parent from "./components/Parent";
+
+const family = {
+  name: "John (Parent)",
+  children: [
+    {
+      name: "Alex (Child)",
+      age: 30,
+      grandchildren: [
+        { name: "Liam (Grandchild)", hobby: "Playing Soccer" },
+        { name: "Sophia (Grandchild)", hobby: "Drawing" },
+      ],
+    },
+    {
+      name: "Emma (Child)",
+      age: 28,
+      grandchildren: [{ name: "Noah (Grandchild)", hobby: "Reading" }],
+    },
+  ],
+};
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="container">
+      <div className="row justify-content-center align-items-center">
+        <div className="col-12 col-md-8">
+          <h2 className="p-2 text-center text-secondary">Homework No.3 Ex.1</h2>
+          <div className="p-4 text-center">
+            <Parent name={family["name"]} childrenData={family["children"]} />
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
