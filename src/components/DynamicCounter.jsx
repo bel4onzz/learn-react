@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function DynamicCounter() {
   const [counter, setCounter] = useState(0);
+  const [backgroundColor, setBackgroundColor] = useState("#ffffff");
 
   const handleSetCounter = (direction) => {
     if (direction === "increment") {
@@ -19,16 +20,28 @@ function DynamicCounter() {
     setCounter(0);
   };
 
-  // background color
-  const opacity = counter && Math.min(Math.abs(counter) * 0.1, 1);
-  let backgroundColor;
-  if (counter > 0) {
-    backgroundColor = `rgba(90, 122, 209, ${opacity})`; // Increment color
-  } else if (counter < 0) {
-    backgroundColor = `rgba(232, 44, 79, ${opacity})`; // Decrement color
-  } else {
-    backgroundColor = "#ffffff"; // counter = 0 color
-  }
+  // set background color whitout state for backgroundColor and useEffect
+  // const opacity = counter && Math.min(Math.abs(counter) * 0.1, 1);
+  // let backgroundColor;
+  // if (counter > 0) {
+  //   backgroundColor = `rgba(90, 122, 209, ${opacity})`; // Increment color
+  // } else if (counter < 0) {
+  //   backgroundColor = `rgba(232, 44, 79, ${opacity})`; // Decrement color
+  // } else {
+  //   backgroundColor = "#ffffff"; // counter = 0 color
+  // }
+
+  useEffect(() => {
+    const opacity = Math.min(Math.abs(counter) * 0.1, 1); // Opacity for positive/negative counters
+
+    if (counter > 0) {
+      setBackgroundColor(`rgba(90, 122, 209, ${opacity})`); // Increment color
+    } else if (counter < 0) {
+      setBackgroundColor(`rgba(232, 44, 79, ${opacity})`); // Decrement color
+    } else {
+      setBackgroundColor("#ffffff"); // counter = 0 color
+    }
+  }, [counter]);
 
   return (
     <div
@@ -50,7 +63,13 @@ function DynamicCounter() {
 
         {/* Counter */}
         <div className="col-4 p-0 text-center">
-          <p className={`fs-3 mb-1 ${Math.abs(counter) >= 5 ? "text-white" : "text-dark"}`}>{counter}</p>
+          <p
+            className={`fs-3 mb-1 ${
+              Math.abs(counter) >= 5 ? "text-white" : "text-dark"
+            }`}
+          >
+            {counter}
+          </p>
         </div>
 
         {/* Increment Button */}
