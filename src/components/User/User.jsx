@@ -1,7 +1,7 @@
 import "./index.css";
 import PropTypes from "prop-types";
 
-const User = ({ userData = {} }) => {
+const User = ({ userData = null }) => {
   if (!userData) {
     return <></>;
   }
