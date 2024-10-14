@@ -5,6 +5,40 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+      body{
+        background-image: linear-gradient(-45deg, #bdf4ff, #ffb8db);
+      }
+
+      .container > .row:first-child{
+        min-height: 100vh;
+      }
+
+      button {
+        border-radius: 8px;
+        border: 1px solid transparent;
+        padding: 0.6em 1.2em;
+        font-size: 1em;
+        font-weight: 500;
+        background-color: #1a1a1a;
+        color: white;
+        cursor: pointer;
+        transition: border-color 0.25s;
+      }
+
+      button:hover {
+        border-color: #646cff;
+        background-color: #646cff;
+      }
+
+      button:focus,
+      button:focus-visible {
+        outline: 4px auto -webkit-focus-ring-color;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
